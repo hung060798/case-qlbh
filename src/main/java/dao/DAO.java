@@ -5,12 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/giaystore?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "";
-
-    protected Connection getConnection() {
-        Connection connection = null;
+    String jdbcURL = "jdbc:mysql://localhost:3306/giaystore";
+    String jdbcUsername = "root";
+    String jdbcPassword = "Dat12345";
+    Connection connection = null;
+    public  Connection getConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
@@ -21,5 +20,4 @@ public class DAO {
         }
         return connection;
     }
-
 }

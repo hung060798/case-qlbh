@@ -8,7 +8,7 @@ public class Account {
     private String address;
     private int loaiTK;
 
-    public Account() {
+    public Account(int anInt, String string, String resultSetString, String setString, int resultSetInt) {
     }
 
     public Account(String username, String password, String email, String address, int loaiTK) {
