@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/giaystore?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "";
+    private String jdbcPassword = "dung1998";
 
     protected Connection getConnection() {
         Connection connection = null;

@@ -1,0 +1,12 @@
+model/Product.java
+ model.Product
+model/Account.java
+ model.Account
+dao/DAO.java
+ dao.DAO
+model/Brand.java
+ model.Brand
+dao/ProductDAO.java
+ dao.ProductDAO
+controller/ProductServlet.java
+ controller.ProductServlet
