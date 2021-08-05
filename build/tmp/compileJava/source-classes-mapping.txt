@@ -6,6 +6,8 @@ dao/DAO.java
  dao.DAO
 model/Brand.java
  model.Brand
+model/Feedback.java
+ model.Feedback
 dao/ProductDAO.java
  dao.ProductDAO
 controller/ProductServlet.java

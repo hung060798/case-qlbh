@@ -72,11 +72,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="/view/Home.jsp">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#aboutus">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/view/Detail.jsp">Chi tiết</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/view/Product.jsp">Sản phẩm</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news">Tin tức</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/home">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home?action=showAll">Sản phẩm</a></li>
                     <li class="nav-item"><a class="nav-link" href="#footer">Trợ giúp</a></li>
                 </ul>
             </div>

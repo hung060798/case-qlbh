@@ -41,6 +41,11 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+    </style>
 
 </head>
 
@@ -69,14 +74,17 @@
                 <div class="title-all text-center">
                     <h1>Sản phẩm</h1>
                     <p>Tại đây có những mẫu sneakers xịn xò nhất, hài lòng cả những vị khách khó tính nhất.</p>
+                    <form action="/home">
                     <div class="input-group" style="position: absolute; top: 0; right: 0; width: 20%;">
-                        <input class="form-control border-end-0 border rounded-pill" type="text" value="" id="example-search-input">
+                        <input class="form-control border-end-0 border rounded-pill" type="text" name="fName" id="example-search-input">
+                        <input type="text" hidden name="action" value="findProduct">
                         <span class="input-group-append">
-                                <button class="btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3" type="button">
+                                <button class="btn btn-outline-secondary bg-white border-start-0 border rounded-pill ms-n3" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </span>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -88,10 +96,6 @@
                         <c:forEach items="${listBrand}" var="b">
                             <button data-filter=".${b.idbrand}">${b.tenbrand}</button>
                         </c:forEach>
-<%--                        <button data-filter=".bulbs">Bulbs</button>--%>
-<%--                        <button data-filter=".fruits">Fruits</button>--%>
-<%--                        <button data-filter=".podded-vegetables">Podded vegetables</button>--%>
-<%--                        <button data-filter=".root-and-tuberous">Root and tuberous</button>--%>
                     </div>
                 </div>
             </div>
@@ -101,7 +105,7 @@
             <c:forEach items="${listProduct}" var="p">
             <div class="col-lg-3 col-md-6 special-grid ${p.idbrand}">
                 <div class="products-single fix">
-                    <div class="box-img-hover">
+                    <div class="box-img-hover" style="height: 200px;">
                         <img src="${p.img}" class="img-fluid" alt="Image">
                         <div class="mask-icon">
                             <ul>
@@ -120,6 +124,28 @@
             </c:forEach>
 
         </div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <c:if test="${idxPage>1}">
+                <li class="page-item">
+                    <a class="page-link" href="/home?action=showAll&idx=${idxPage-1}" tabindex="-1">Previous</a>
+                </li>
+                </c:if>
+                <c:forEach var="i" begin="1" end="${endPage}">
+                    <li class="page-item ${idxPage==i?"active":""}"><a class="page-link" href="/home?action=showAll&idx=${i}">${i}</a></li>
+                </c:forEach>
+
+<%--                <li class="page-item active">--%>
+<%--                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>--%>
+<%--                </li>--%>
+<%--                <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+                <c:if test="${idxPage<endPage}">
+                <li class="page-item">
+                    <a class="page-link" href="/home?action=showAll&idx=${idxPage+1}">Next</a>
+                </li>
+                </c:if>
+            </ul>
+        </nav>
     </div>
 </div>
 <!-- End Gallery  -->

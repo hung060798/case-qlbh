@@ -118,7 +118,6 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="/home">Trang chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#aboutus">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="shop-detail.html">Chi tiết</a></li>
                     <li class="nav-item"><a class="nav-link" href="/home?action=showAll">Sản phẩm</a></li>
                     <li class="nav-item"><a class="nav-link" href="#news">Tin tức</a></li>
                     <li class="nav-item"><a class="nav-link" href="#footer">Trợ giúp</a></li>
@@ -193,19 +192,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
+                <div class="shop-cat-box" style="height: 85%;">
                     <img class="img-fluid" src="/webpage/images/credit.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Bảo mật thông tin khách hàng</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
+                <div class="shop-cat-box" style="height: 85%;">
                     <img class="img-fluid" src="/webpage/images/shipper.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Vận chuyển miễn phí toàn quốc</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
+                <div class="shop-cat-box" style="height: 85%;">
                     <img class="img-fluid" src="/webpage/images/nhan-vien-tu-van-ban-hang-2.jpg" alt="" />
                     <a class="btn hvr-hover" href="#">Hỗ trợ 24/7</a>
                 </div>
@@ -259,7 +258,7 @@
             <c:forEach items="${listHotProduct}" var="h">
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
-                        <div class="box-img-hover">
+                        <div class="box-img-hover" style="height: 200px;">
                             <div class="type-lb">
                                 <p class="sale">Hot</p>
                             </div>
@@ -282,7 +281,7 @@
             <c:forEach items="${listLastProduct}" var="l">
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
-                        <div class="box-img-hover">
+                        <div class="box-img-hover" style="height: 200px;">
                             <div class="type-lb">
                                 <p class="sale">New</p>
                             </div>
