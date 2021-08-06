@@ -40,8 +40,9 @@
                         <div class="login-space">
                             <div class="login">
                                 <form action="/login?action=dangnhap" method="post">
-                                    <div class="group"> <label for="user" class="label" style="color: white">Username</label> <input id="user" type="text" class="input" placeholder="Enter your username" name="username"> </div>
-                                    <div class="group"> <label for="pass" class="label" style="color: white">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" name="password"> </div>
+                                    <div class="group"> <label for="user" class="label" style="color: white">Username</label> <input id="user" value="${username}" type="text" class="input" placeholder="Enter your username" name="username"> </div>
+                                    <div class="group"> <label for="pass" class="label" style="color: white">Password</label> <input id="pass" value="${password}" type="password" class="input" data-type="password" placeholder="Enter your password" name="password"> </div>
+                                    <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
                                     <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
                                     <c:if test="${checkAcc}">
                                         <h4 style="text-align: center; color: red; font-weight: 600;">Tài khoản hoặc mật khẩu không chính xác !!!</h4>

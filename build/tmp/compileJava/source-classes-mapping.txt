@@ -4,11 +4,15 @@ model/Account.java
  model.Account
 controller/EmailCondition.java
  controller.EmailCondition
-controller/LoginServlet.java
- controller.LoginServlet
+dao/LoginDAO.java
+ dao.LoginDAO
 service/AccService.java
  service.AccService
 dao/DAO.java
  dao.DAO
-dao/LoginDAO.java
- dao.LoginDAO
+controller/homeServlet.java
+ controller.homeServlet
+controller/LogoutServlet.java
+ controller.LogoutServlet
+controller/LoginServlet.java
+ controller.LoginServlet

@@ -58,10 +58,18 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="our-link">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
-                        <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào Dũng CT</a></li>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> Đăng xuất</a></li>
-                        <li><a href="#"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                        <c:if test="${sessionScope.acc==null}">
+                            <li><a href="/login"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
+                        </c:if>
+
+
+                        <c:if test="${sessionScope.acc!=null}">
+                            <li><a href="/logout"><i class="fa fa-user s_color"></i> Đăng xuất</a></li>
+                            <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào ${sessionScope.acc.username}</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc.loaiTK==1}">
+                            <li><a href="#"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </div>
@@ -106,10 +114,12 @@
         <div class="container">
             <!-- Start Header Navigation -->
             <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/home"><img style="width: 100px;" src="/webpage/images/logo.jpg" class="logo" alt=""></a>
+                <a class="navbar-brand" href="/home"><img style="width: 100px;" src="/webpage/images/logo.jpg"
+                                                          class="logo" alt=""></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -162,7 +172,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Welcome To <br> Shoestore</strong></h1>
-                        <p class="m-b-40">Chân tôi vẫn đang trên mặt đất, <br> và tôi chỉ đang đi những đôi giày tốt hơn.</p>
+                        <p class="m-b-40">Chân tôi vẫn đang trên mặt đất, <br> và tôi chỉ đang đi những đôi giày tốt
+                            hơn.</p>
                         <p><a class="btn hvr-hover" href="#">Khám phá ngay</a></p>
                     </div>
                 </div>
@@ -174,7 +185,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>Welcome To <br> Shoestore</strong></h1>
-                        <p class="m-b-40">Hãy đưa một đôi giày phù hợp cho cô gái, <br> và cô ấy sẽ chinh phục cả thế giới này.</p>
+                        <p class="m-b-40">Hãy đưa một đôi giày phù hợp cho cô gái, <br> và cô ấy sẽ chinh phục cả thế
+                            giới này.</p>
                         <p><a class="btn hvr-hover" href="#">Khám phá ngay</a></p>
                     </div>
                 </div>
@@ -194,19 +206,19 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="/webpage/images/credit.jpg" alt="" />
+                    <img class="img-fluid" src="/webpage/images/credit.jpg" alt=""/>
                     <a class="btn hvr-hover" href="#">Bảo mật thông tin khách hàng</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="/webpage/images/shipper.jpg" alt="" />
+                    <img class="img-fluid" src="/webpage/images/shipper.jpg" alt=""/>
                     <a class="btn hvr-hover" href="#">Vận chuyển miễn phí toàn quốc</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="/webpage/images/nhan-vien-tu-van-ban-hang-2.jpg" alt="" />
+                    <img class="img-fluid" src="/webpage/images/nhan-vien-tu-van-ban-hang-2.jpg" alt=""/>
                     <a class="btn hvr-hover" href="#">Hỗ trợ 24/7</a>
                 </div>
             </div>
@@ -220,12 +232,13 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="offer-box-products">
-                    <img class="img-fluid" style="height:500px;"src="/webpage/images/Adidas-Clearance-Sale.jpg" alt="" />
+                    <img class="img-fluid" style="height:500px;" src="/webpage/images/Adidas-Clearance-Sale.jpg"
+                         alt=""/>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="offer-box-products">
-                    <img class="img-fluid" style="height: 500px;" src="/webpage/images/nikesales.jpg" alt="" />
+                    <img class="img-fluid" style="height: 500px;" src="/webpage/images/nikesales.jpg" alt=""/>
                 </div>
             </div>
         </div>
@@ -266,8 +279,10 @@
                             <img src="${h.img}" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a href="/home?action=showDetail&idsp=${h.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    <li><a href="/home?action=showDetail&idsp=${h.idsp}" data-toggle="tooltip"
+                                           data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right"
+                                           title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
                                 <a class="cart" href="#">Add to Cart</a>
                             </div>
@@ -289,8 +304,10 @@
                             <img src="${l.img}" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a href="/home?action=showDetail&idsp=${l.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    <li><a href="/home?action=showDetail&idsp=${l.idsp}" data-toggle="tooltip"
+                                           data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right"
+                                           title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
                                 <a class="cart" href="#">Add to Cart</a>
                             </div>
@@ -346,12 +363,15 @@
             <div class="col-md-6 col-lg-4 col-xl-4">
                 <div class="blog-box">
                     <div class="blog-img">
-                        <a target="_blank" href="https://authentic-shoes.com/blogs/news/nhung-hinh-anh-chinh-thuc-ve-travis-scott-x-fragment-x-air-jordan-1-low"><img class="img-fluid" style="height: 280px;" src="/webpage/images/news2.png" alt="" /></a>
+                        <a target="_blank"
+                           href="https://authentic-shoes.com/blogs/news/nhung-hinh-anh-chinh-thuc-ve-travis-scott-x-fragment-x-air-jordan-1-low"><img
+                                class="img-fluid" style="height: 280px;" src="/webpage/images/news2.png" alt=""/></a>
                     </div>
                     <div class="blog-content">
                         <div class="title-blog">
                             <h3>Những hình ảnh chính thức về Travis Scott x Fragment x Air Jordan 1 Low</h3>
-                            <p>Ngay sau khi Travis Scott x Fragment x Air Jordan 1 High OG vừa được ra mắt vào ngày hôm qua dưới hình thức raffle thì ngay lập tức rapper Travis...
+                            <p>Ngay sau khi Travis Scott x Fragment x Air Jordan 1 High OG vừa được ra mắt vào ngày hôm
+                                qua dưới hình thức raffle thì ngay lập tức rapper Travis...
                             </p>
                         </div>
                     </div>
@@ -360,12 +380,16 @@
             <div class="col-md-6 col-lg-4 col-xl-4">
                 <div class="blog-box">
                     <div class="blog-img">
-                        <a target="_blank" href="https://vansvietnam.com.vn/bedwin-the-heartbreakers-x-vans-cung-bo-hoa-tiet-bandana-sac-so"><img class="img-fluid" style="height: 280px;" src="/webpage/images/Vansnews1.jpg" alt="" /></a>
+                        <a target="_blank"
+                           href="https://vansvietnam.com.vn/bedwin-the-heartbreakers-x-vans-cung-bo-hoa-tiet-bandana-sac-so"><img
+                                class="img-fluid" style="height: 280px;" src="/webpage/images/Vansnews1.jpg"
+                                alt=""/></a>
                     </div>
                     <div class="blog-content">
                         <div class="title-blog">
                             <h3>BEDWIN & THE HEARTBREAKERS x VANS CÙNG BỘ HỌA TIẾT BANDANA SẶC SỠ</h3>
-                            <p>Nhãn hiệu Nhật Bản BEDWIN & THE HEARTBREAKERS chính thức ra mắt sự hợp tác mới với VAULT BY VANS.</p>
+                            <p>Nhãn hiệu Nhật Bản BEDWIN & THE HEARTBREAKERS chính thức ra mắt sự hợp tác mới với VAULT
+                                BY VANS.</p>
                         </div>
                     </div>
                 </div>
@@ -373,12 +397,16 @@
             <div class="col-md-6 col-lg-4 col-xl-4">
                 <div class="blog-box">
                     <div class="blog-img">
-                        <a target="_blank" href="https://authentic-shoes.com/blogs/news/bape-x-adidas-superstar-80s-green-camo-su-ket-hop-tuyet-voi"><img class="img-fluid" style="height: 280px;" src="/webpage/images/news3.png" alt="" /></a>
+                        <a target="_blank"
+                           href="https://authentic-shoes.com/blogs/news/bape-x-adidas-superstar-80s-green-camo-su-ket-hop-tuyet-voi"><img
+                                class="img-fluid" style="height: 280px;" src="/webpage/images/news3.png" alt=""/></a>
                     </div>
                     <div class="blog-content">
                         <div class="title-blog">
                             <h3>Bape x adidas Superstar 80s "Green Camo" - Sự kết hợp tuyệt vời</h3>
-                            <p>Như các bạn đã biết. Sau sự thành công quả hai phiên bản đầu tiên, sản phẩm collab thứ ba đã tiếp nối và đã được ra mắt vào tháng 5 năm nay. Đối với những người hâm mộ của hãng thời trang...</p>
+                            <p>Như các bạn đã biết. Sau sự thành công quả hai phiên bản đầu tiên, sản phẩm collab thứ ba
+                                đã tiếp nối và đã được ra mắt vào tháng 5 năm nay. Đối với những người hâm mộ của hãng
+                                thời trang...</p>
                         </div>
                     </div>
                 </div>
@@ -397,9 +425,9 @@
                 </div>
                 <div class="col-sm-4 col-lg-4">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="/webpage/images/img-1.jpg" alt="" />
+                        <div class="our-team"><img src="/webpage/images/img-1.jpg" alt=""/>
                             <div class="team-content">
-                                <h3 class="title">Dũng CT</h3> <span class="post">Founder</span> </div>
+                                <h3 class="title">Dũng CT</h3> <span class="post">Founder</span></div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -414,18 +442,22 @@
                                     <a href="#" class="fab fa-youtube"></a>
                                 </li>
                             </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                            <div class="icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                         </div>
                         <div class="team-description">
-                            <p>Dũng CT (sinh ngày 02 tháng 12 năm 1998) là một học viên của CodeGym kiêm doanh nhân mảng công nghệ Blockchain . Anh là nhà sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với chức danh chủ tịch kiêm giám đốc điều hành mảng UI/UX và Database. Anh có tài sản ròng ước tính là 105 tỷ $ tính đến tháng 11 năm 2020.</p>
+                            <p>Dũng CT (sinh ngày 02 tháng 12 năm 1998) là một học viên của CodeGym kiêm doanh nhân mảng
+                                công nghệ Blockchain . Anh là nhà sáng lập của Shoestore, và hiện đang điều hành chuỗi
+                                cửa hàng này với chức danh chủ tịch kiêm giám đốc điều hành mảng UI/UX và Database. Anh
+                                có tài sản ròng ước tính là 105 tỷ $ tính đến tháng 11 năm 2020.</p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0">
+                    </div>
                 </div>
                 <div class="col-sm-4 col-lg-4">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="/webpage/images/img-2.jpg" alt="" />
+                        <div class="our-team"><img src="/webpage/images/img-2.jpg" alt=""/>
                             <div class="team-content">
-                                <h3 class="title">Đạt 09</h3> <span class="post">Co-Founder</span> </div>
+                                <h3 class="title">Đạt 09</h3> <span class="post">Co-Founder</span></div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -440,18 +472,23 @@
                                     <a href="#" class="fab fa-youtube"></a>
                                 </li>
                             </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                            <div class="icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                         </div>
                         <div class="team-description">
-                            <p>Đạt 09 hay có tên gọi khác là Đạt2k (sinh năm 2000) cũng là học viên của CodeGym và FPT. Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với chức danh giám đốc điều hành mảng bảo mật tài khoản. Anh hiện là người giàu thứ 6 thế giới với tài sản ròng ước tính là 100 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng đặc biệt là hay chém gió.</p>
+                            <p>Đạt 09 hay có tên gọi khác là Đạt2k (sinh năm 2000) cũng là học viên của CodeGym và FPT.
+                                Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với
+                                chức danh giám đốc điều hành mảng bảo mật tài khoản. Anh hiện là người giàu thứ 6 thế
+                                giới với tài sản ròng ước tính là 100 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng
+                                đặc biệt là hay chém gió.</p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0">
+                    </div>
                 </div>
                 <div class="col-sm-4 col-lg-4">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="/webpage/images/img-3.jpg" alt="" />
+                        <div class="our-team"><img src="/webpage/images/img-3.jpg" alt=""/>
                             <div class="team-content">
-                                <h3 class="title">Hưng Dê Gấu</h3> <span class="post">Co-Founder</span> </div>
+                                <h3 class="title">Hưng Dê Gấu</h3> <span class="post">Co-Founder</span></div>
                             <ul class="social">
                                 <li>
                                     <a href="#" class="fab fa-facebook"></a>
@@ -466,12 +503,17 @@
                                     <a href="#" class="fab fa-youtube"></a>
                                 </li>
                             </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                            <div class="icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
                         </div>
                         <div class="team-description">
-                            <p>Hưng dê gấu hay có tên gọi khác là Hưng DG (sinh năm 1998) cũng là học viên của CodeGym. Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với chức danh giám đốc điều hành mảng quản lý sản phẩm. Anh hiện là người giàu thứ 7 thế giới với tài sản ròng ước tính là 99 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng đặc biệt là bắn thuốc lào như gió.</p>
+                            <p>Hưng dê gấu hay có tên gọi khác là Hưng DG (sinh năm 1998) cũng là học viên của CodeGym.
+                                Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với
+                                chức danh giám đốc điều hành mảng quản lý sản phẩm. Anh hiện là người giàu thứ 7 thế
+                                giới với tài sản ròng ước tính là 99 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng
+                                đặc biệt là bắn thuốc lào như gió.</p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0">
+                    </div>
                 </div>
             </div>
         </div>
@@ -488,7 +530,9 @@
                     <div class="footer-top-box">
                         <h3>Thời gian mở cửa</h3>
                         <ul class="list-time">
-                            <li>Thứ hai - Thứ sáu: 08.00am to 05.00pm</li> <li>Thứ bảy: 10.00am to 08.00pm</li> <li>Chủ nhật: <span>Đóng cửa</span></li>
+                            <li>Thứ hai - Thứ sáu: 08.00am to 05.00pm</li>
+                            <li>Thứ bảy: 10.00am to 08.00pm</li>
+                            <li>Chủ nhật: <span>Đóng cửa</span></li>
                         </ul>
                     </div>
                 </div>
@@ -497,7 +541,7 @@
                         <h3>Nhận tin tức mới nhất</h3>
                         <form class="newsletter-box">
                             <div class="form-group">
-                                <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                <input class="" type="email" name="Email" placeholder="Email Address*"/>
                                 <i class="fa fa-envelope"></i>
                             </div>
                             <button class="btn hvr-hover" type="submit">Submit</button>
@@ -525,7 +569,11 @@
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
                         <h4>Sứ mệnh</h4>
-                        <p>Sứ mệnh của chúng tôi là điều thúc đẩy chúng tôi làm mọi thứ có thể để mở rộng tiềm năng của con người. Chúng tôi làm điều đó bằng cách tạo ra những đổi mới thể thao đột phá, bằng cách làm cho các sản phẩm của chúng tôi bền vững hơn, bằng cách xây dựng một đội ngũ sáng tạo và đa dạng trên toàn cầu và bằng cách tạo ra tác động tích cực trong cộng đồng nơi chúng tôi sống và làm việc.</p>
+                        <p>Sứ mệnh của chúng tôi là điều thúc đẩy chúng tôi làm mọi thứ có thể để mở rộng tiềm năng của
+                            con người. Chúng tôi làm điều đó bằng cách tạo ra những đổi mới thể thao đột phá, bằng cách
+                            làm cho các sản phẩm của chúng tôi bền vững hơn, bằng cách xây dựng một đội ngũ sáng tạo và
+                            đa dạng trên toàn cầu và bằng cách tạo ra tác động tích cực trong cộng đồng nơi chúng tôi
+                            sống và làm việc.</p>
                         <p>Có trụ sở tại Hà Nội. Store bao gồm các thương hiệu Nike, Adidas, Vans và Bitis.</p>
                     </div>
                 </div>
@@ -549,10 +597,12 @@
                                 <p><i class="fas fa-map-marker-alt"></i>Cơ sở 3: Phú Thọ </p>
                             </li>
                             <li>
-                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+8487654321">0987654321</a></p>
+                                <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+8487654321">0987654321</a>
+                                </p>
                             </li>
                             <li>
-                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:cskh@shoestore.com">cskh@shoestore.com</a></p>
+                                <p><i class="fas fa-envelope"></i>Email: <a href="mailto:cskh@shoestore.com">cskh@shoestore.com</a>
+                                </p>
                             </li>
                         </ul>
                     </div>
