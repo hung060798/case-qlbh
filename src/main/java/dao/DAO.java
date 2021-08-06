@@ -8,9 +8,8 @@ public class DAO {
     private String jdbcURL = "jdbc:mysql://localhost:3306/giaystore";
     private String jdbcUsername = "root";
     private String jdbcPassword = "Dat12345";
-
-    protected Connection getConnection() {
-        Connection connection = null;
+    Connection connection = null;
+    public Connection getConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
@@ -21,5 +20,4 @@ public class DAO {
         }
         return connection;
     }
-
 }

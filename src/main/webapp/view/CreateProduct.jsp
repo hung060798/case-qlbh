@@ -10,14 +10,6 @@
 <html>
 <head>
     <title>Thêm mới sản phẩm</title>
-    <style>
-        .container{
-            background-color: greenyellow;
-        }
-        .table{
-            background-color: lightblue;
-        }
-    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -38,8 +30,6 @@
                 <td><input placeholder="Enter the img" name="img"></td>
                 <td><input placeholder="Enter the price" name="gia"></td>
                 <td><input placeholder="Enter the soluong" name="soluong"></td>
-            </tr>
-            <tr>
                 <td><input placeholder="Enter the mausac" name="mausac"></td>
                 <td><input placeholder="Enter the size" name="size"></td>
                 <td><input placeholder="Enter the mota" name="mota"></td>
@@ -51,7 +41,7 @@
         </c:if>
         <button type="submit" class="btn btn-success">Create Product</button>
     </form>
-    <a href="/product?action=back" type="submit" class="btn btn-success">Back</a>
+    <a href="/product" type="submit" class="btn btn-success">Back</a>
 </div>
 </body>
 </html>

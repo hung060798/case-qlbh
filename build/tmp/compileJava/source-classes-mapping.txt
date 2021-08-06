@@ -1,12 +1,24 @@
 model/Product.java
  model.Product
+service/ProductService.java
+ service.ProductService
+controller/LogoutServlet.java
+ controller.LogoutServlet
+controller/EmailCondition.java
+ controller.EmailCondition
+controller/LoginServlet.java
+ controller.LoginServlet
+controller/homeServlet.java
+ controller.homeServlet
+service/AccService.java
+ service.AccService
 model/Account.java
  model.Account
 dao/DAO.java
  dao.DAO
-service/ProductService.java
- service.ProductService
+dao/LoginDAO.java
+ dao.LoginDAO
 dao/ManagerProduct.java
  dao.ManagerProduct
-controller/ProductServlet.java
- controller.ProductServlet
+controller/ProductServlet1.java
+ controller.ProductServlet1

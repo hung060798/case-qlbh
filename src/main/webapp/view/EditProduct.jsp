@@ -9,14 +9,6 @@
 <html>
 <head>
     <title>Edit Student</title>
-    <style>
-        .container{
-            background-color: greenyellow;
-        }
-        .table{
-            background-color: lightblue;
-        }
-    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -31,14 +23,24 @@
     <form method="post">
         <table class="table">
             <tbody>
+            <thead>
+            <tr>
+                <th>idsp</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Màu Sắc</th>
+                <th>Kích Thước</th>
+                <th>idbrand</th>
+            </tr>
+            </thead>
             <tr>
 <%--                (int idsp, String tensp, String img, int gia, int soluong, String mausac, String size, String mota, int idbrand&ndash;%&gt;--%>
                 <td><input placeholder="Enter the idsp" name="idsp" value="${product.idsp}" readonly></td>
                 <td><input placeholder="Enter the tensp" name="tensp" value="${product.tensp}"></td>
                 <td><input placeholder="Enter the img" name="img" value="${product.img}"></td>
                 <td><input placeholder="Enter the gia" name="gia" value="${product.gia}"></td>
-            </tr>
-            <tr>
                 <td><input placeholder="Enter the soluong" name="soluong" value="${product.soluong}"></td>
                 <td><input placeholder="Enter the mausac" name="mausac" value="${product.mausac}"></td>
                 <td><input placeholder="Enter the size" name="size" value="${product.size}"></td>
@@ -49,7 +51,7 @@
         </table>
         <button type="submit" class="btn btn-success">Edit Product</button>
     </form>
-    <a href="/product?action=back" type="submit" class="btn btn-success">Back</a>
+    <a href="/product" type="submit" class="btn btn-success">Back</a>
 </div>
 </body>
 </html>
