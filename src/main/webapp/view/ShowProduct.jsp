@@ -10,14 +10,6 @@
 <html>
 <head>
     <title>Danh sách sản phẩm</title>
-    <style>
-        .container{
-            background-color: greenyellow;
-        }
-        .table{
-            background-color: lightblue;
-        }
-    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -34,10 +26,17 @@
     <a href="/product?action=create" class="btn btn-success">Create</a>
     <br>
     <form action="/product" method="get">
-        <input type="text" placeholder="Enter the name of the brand you want to find" name ="findName">
+        <input type="text" placeholder="Enter the id you want to find" name ="findName">
         <input type="text" hidden name="action" value="findName">
-        <button type="submit" class="btn btn-info">Find by idbranch </button>
+        <button type="submit" class="btn btn-info">Find by name</button>
     </form>
+    <br>
+    <form action="/product?action=find" method="post">
+        <input type="text" placeholder="Enter the id you want to find" name ="idfind">
+        <button class="btn btn-info" type="submit">Search by id</button>
+    </form>
+    <br>
+    <br>
     <table class="table" border="2px">
         <thead>
         <tr>
@@ -72,7 +71,7 @@
 
         </tbody>
     </table>
-    <a href="/home" type="submit" class="btn btn-success">Home</a>
+    <a href="/product" type="submit" class="btn btn-success">Home</a>
 </div>
 </body>
 </html>

@@ -1,9 +1,7 @@
 package controller;
 
-import dao.ProductDAO;
-import model.Brand;
-import model.Feedback;
 import model.Product;
+import service.ProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,100 +10,128 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(urlPatterns = {"","/home"})
+@WebServlet(urlPatterns = {"/product"})
 public class ProductServlet extends HttpServlet {
-    private ProductDAO productDAO;
-
-    @Override
-    public void init() throws ServletException {
-        productDAO = new ProductDAO();
-    }
+    ProductService productService = new ProductService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
-        if (action == null) action = "";
-        switch (action) {
-            case "showAll":
-                showProduct(req, resp);
+        RequestDispatcher dispatcher;
+        if (action == null){
+            action= "";
+        }
+        switch (action){
+            case "create":
+                resp.sendRedirect("view/CreateProduct.jsp");
                 break;
-            case "showDetail":
-                showDetailProduct(req, resp);
+
+            case "edit":
+                int indexEdit = Integer.parseInt(req.getParameter("index"));
+                req.setAttribute("product",productService.list.get(indexEdit));
+                dispatcher = req.getRequestDispatcher("view/EditProduct.jsp");
+                dispatcher.forward(req,resp);
                 break;
-            case "findProduct":
-                findProductByName(req, resp);
+
+            case "delete":
+                int index = Integer.parseInt(req.getParameter("index"));
+                try {
+                productService.delete(index);
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+                resp.sendRedirect("/product");
                 break;
+            case "findName":
+                String name = req.getParameter("findName");
+                try {
+                req.setAttribute("ListProduct", productService.findByName(name));
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req,resp);
+                break;
+
             default:
-                showLastNHotProduct(req, resp);
+                req.setAttribute("ListProduct",productService.list);
+                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req,resp);
                 break;
+
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        RequestDispatcher dispatcher;
+        switch (action) {
+            case "create":
+                int idsp = Integer.parseInt(req.getParameter("idsp"));
+                String tensp = req.getParameter("tensp");
+                String img = req.getParameter("img");
+                int gia = Integer.parseInt(req.getParameter("gia"));
+                int soluong = Integer.parseInt(req.getParameter("soluong"));
+                String mausac = req.getParameter("mausac");
+                String size = req.getParameter("size");
+                String mota = req.getParameter("mota");
+                int idbrand = Integer.parseInt(req.getParameter("idbrand"));
 
+                try {
+                    Product product = new Product(idsp, tensp, img, gia, soluong, mausac,size,mota,idbrand);
+                    productService.add(product);
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+
+                req.setAttribute("ListProduct", productService.list);
+                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req, resp);
+                break;
+
+            case "edit":
+                int idsp1 = Integer.parseInt(req.getParameter("idsp"));
+                String tensp1 = req.getParameter("tensp");
+                String img1 = req.getParameter("img");
+                int gia1 = Integer.parseInt(req.getParameter("gia"));
+                int soluong1 = Integer.parseInt(req.getParameter("soluong"));
+                String mausac1 = req.getParameter("mausac");
+                String size1 = req.getParameter("size");
+                String mota1 = req.getParameter("mota");
+                int idbrand1 = Integer.parseInt(req.getParameter("idbrand"));
+
+                Product product1 = new Product(idsp1, tensp1, img1, gia1,soluong1,mausac1,size1,mota1,idbrand1);
+
+                int index = Integer.parseInt(req.getParameter("index"));
+                try {
+                    productService.edit(product1, index);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                // chuyển hướng request và response sang thàng jsp
+                req.setAttribute("ListProduct", productService.list);
+                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req, resp);
+                break;
+
+            case "find":
+                int idfind = Integer.parseInt(req.getParameter("idfind"));
+                ArrayList<Product> list1 = new ArrayList<>();
+                for(Product p: productService.list){
+                    if(p.getIdsp()==idfind){
+                        list1.add(p);
+                    }
+                }
+                req.setAttribute("ListProduct",list1);
+                dispatcher= req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req, resp);
+                break;
+
+        }
     }
-
-    private void showProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        List<Product> listProduct = productDAO.selectAllProduct();
-        List<Brand> listBrand = productDAO.selectAllBrand();
-        int endPage = productDAO.getTotalProduct() / 4;
-        if (productDAO.getTotalProduct() % 4 != 0) endPage++;
-        String idx = req.getParameter("idx");
-        if(idx == null) idx = "1";
-        int idxPage = Integer.parseInt(idx);
-        List<Product> listProduct = productDAO.pagingProduct(idxPage);
-        req.setAttribute("endPage", endPage);
-        req.setAttribute("listProduct", listProduct);
-        req.setAttribute("listBrand", listBrand);
-        req.setAttribute("idxPage", idxPage);
-        RequestDispatcher rd = req.getRequestDispatcher("/view/Product.jsp");
-        rd.forward(req, resp);
-    }
-    private void showLastNHotProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product> listLastProduct = productDAO.selectLastProduct();
-        List<Product> listHotProduct = productDAO.selectHotProduct();
-        req.setAttribute("listLastProduct", listLastProduct);
-        req.setAttribute("listHotProduct", listHotProduct);
-        RequestDispatcher rd = req.getRequestDispatcher("/view/Home.jsp");
-        rd.forward(req, resp);
-    }
-
-    private void showDetailProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int idsp = Integer.parseInt(req.getParameter("idsp"));
-        Product product = productDAO.selectProductByID(idsp);
-        List<Feedback> listFeedback = productDAO.getFeedback(idsp);
-        int giaAo = (int) (product.getGia() * 1.05);
-        int rand = (int) (Math.random()*7 + 2);
-        String imgRand = "/img/girl" + rand + ".jpg";
-        req.setAttribute("listFeedback", listFeedback);
-        req.setAttribute("imgRand", imgRand);
-        req.setAttribute("product", product);
-        req.setAttribute("giaAo", giaAo);
-        RequestDispatcher rd = req.getRequestDispatcher("/view/Detail.jsp");
-        rd.forward(req, resp);
-    }
-
-    private void findProductByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fName = req.getParameter("fName");
-        List<Brand> listBrand = productDAO.selectAllBrand();
-        int endPage = productDAO.getTotalProduct() / 4;
-        if (productDAO.getTotalProduct() % 4 != 0) endPage++;
-        String idx = req.getParameter("idx");
-        if(idx == null) idx = "1";
-        int idxPage = Integer.parseInt(idx);
-        List<Product> listProduct = productDAO.findProductByName(fName);
-        req.setAttribute("endPage", endPage);
-        req.setAttribute("listProduct", listProduct);
-        req.setAttribute("listBrand", listBrand);
-        req.setAttribute("idxPage", idxPage);
-        RequestDispatcher rd = req.getRequestDispatcher("/view/Product.jsp");
-        rd.forward(req, resp);
-    }
-
-
 }

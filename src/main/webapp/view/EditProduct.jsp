@@ -23,18 +23,6 @@
     <form method="post">
         <table class="table">
             <tbody>
-            <thead>
-            <tr>
-                <th>idsp</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Hình Ảnh</th>
-                <th>Giá</th>
-                <th>Số Lượng</th>
-                <th>Màu Sắc</th>
-                <th>Kích Thước</th>
-                <th>idbrand</th>
-            </tr>
-            </thead>
             <tr>
 <%--                (int idsp, String tensp, String img, int gia, int soluong, String mausac, String size, String mota, int idbrand&ndash;%&gt;--%>
                 <td><input placeholder="Enter the idsp" name="idsp" value="${product.idsp}" readonly></td>
@@ -47,11 +35,12 @@
                 <td><input placeholder="Enter the mota" name="mota" value="${product.mota}"></td>
                 <td><input placeholder="Enter the idbrand" name="idbrand" value="${product.idbrand}"></td>
             </tr>
+
             </tbody>
         </table>
         <button type="submit" class="btn btn-success">Edit Product</button>
+
     </form>
-    <a href="/product" type="submit" class="btn btn-success">Back</a>
 </div>
 </body>
 </html>

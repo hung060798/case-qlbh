@@ -12,11 +12,14 @@ public class ManagerProduct {
     static {
         connection = dao.getConnection();
     }
+
     public static   ArrayList<Product> select() throws SQLException {
         String select = "select * from product";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(select);
+
         while(resultSet.next()){
+//
             int idsp = Integer.parseInt(resultSet.getString("idsp"));
             String tensp = resultSet.getString("tensp");
             String img = resultSet.getString("img");
@@ -26,22 +29,26 @@ public class ManagerProduct {
             String size = resultSet.getString("size");
             String mota = resultSet.getString("mota");
             int idbrand = Integer.parseInt(resultSet.getString("idbrand"));
+
             list.add(new Product(idsp, tensp, img,gia,soluong,mausac,size, mota,idbrand));
+
         }
         return  list;
     }
 
     public static void create(Product product) throws SQLException{
-        String create = "insert into product(tensp,img,gia,soluong,mausac,size,mota,idbrand) value(?,?,?,?,?,?,?,?)";
+        String create = "insert into product value(?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(create);
-        preparedStatement.setString(1,product.getTensp());
-        preparedStatement.setString(2,product.getImg());
-        preparedStatement.setInt(3,product.getGia());
-        preparedStatement.setInt(4,product.getSoluong());
-        preparedStatement.setString(5,product.getMausac());
-        preparedStatement.setString(6,product.getSize());
-        preparedStatement.setString(7,product.getMota());
-        preparedStatement.setInt(8,product.getIdbrand());
+        preparedStatement.setInt(1,product.getIdsp());
+        preparedStatement.setString(2,product.getTensp());
+        preparedStatement.setString(3,product.getImg());
+        preparedStatement.setInt(4,product.getGia());
+        preparedStatement.setInt(5,product.getSoluong());
+        preparedStatement.setString(6,product.getMausac());
+        preparedStatement.setString(7,product.getSize());
+        preparedStatement.setString(8,product.getMota());
+        preparedStatement.setInt(9,product.getIdbrand());
+
         preparedStatement.execute();
     }
 
@@ -70,9 +77,10 @@ public class ManagerProduct {
 
     public static ArrayList<Product> findByName(String findName) throws SQLException{
         ArrayList<Product> findList = new ArrayList<>();
-        String edit = "select * from product inner join brand on product.idbrand=brand.idbrand where tenbrand like '%" + findName + "%'";
+        String edit = "select * from product where name like '%' + findName + '%'";
         PreparedStatement preparedStatement = connection.prepareStatement(edit);
         ResultSet resultSet = preparedStatement.executeQuery();
+
         while (resultSet.next()){
             int idsp = Integer.parseInt(resultSet.getString("idsp"));
             String tensp = resultSet.getString("tensp");
