@@ -85,83 +85,36 @@
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
                             <th>Tổng tiền</th>
-                            <th>Xóa</th>
+                            <th><a href="/cart?action=removeAll">Xóa tất cả</a></th>
                         </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${sessionScope.orders.listItem}" var="i">
                             <td class="thumbnail-img">
-                                <a href="#">
+                                <a href="/home?action=showDetail&idsp=${i.product.idsp}">
                                     <img class="img-fluid" src="${i.product.img}" alt="" />
                                 </a>
                             </td>
                             <td class="name-pr">
-                                <a href="#">
+                                <a href="/home?action=showDetail&idsp=${i.product.idsp}">
                                     ${i.product.tensp}
                                 </a>
                             </td>
                             <td class="price-pr">
                                 <p>${i.product.gia}</p>
                             </td>
-                            <td class="quantity-box"><input type="number" size="4" value="${i.soluongmua}" min="0" step="1" class="c-input-text qty text"></td>
+                            <td class="quantity-box"><a href="/cart?action=decrease&id=${i.iditem}"><button class="btnSub">-</button></a> <strong>${i.soluongmua}</strong>
+                                <a href="/cart?action=increase&id=${i.iditem}"><button class="btnAdd">+</button></a></td>
                             <td class="total-pr">
                                 <p>${i.product.gia * i.soluongmua}</p>
                             </td>
                             <td class="remove-pr">
-                                <a href="#">
+                                <a href="/cart?action=remove&idsp=${i.product.idsp}">
                                     <i class="fas fa-times"></i>
                                 </a>
                             </td>
                         </tr>
                         </c:forEach>
-<%--                        <tr>--%>
-<%--                            <td class="thumbnail-img">--%>
-<%--                                <a href="#">--%>
-<%--                                    <img class="img-fluid" src="/webpage/images/img-pro-02.jpg" alt="" />--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                            <td class="name-pr">--%>
-<%--                                <a href="#">--%>
-<%--                                    Lorem ipsum dolor sit amet--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                            <td class="price-pr">--%>
-<%--                                <p>$ 60.0</p>--%>
-<%--                            </td>--%>
-<%--                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>--%>
-<%--                            <td class="total-pr">--%>
-<%--                                <p>$ 80.0</p>--%>
-<%--                            </td>--%>
-<%--                            <td class="remove-pr">--%>
-<%--                                <a href="#">--%>
-<%--                                    <i class="fas fa-times"></i>--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                        <tr>--%>
-<%--                            <td class="thumbnail-img">--%>
-<%--                                <a href="#">--%>
-<%--                                    <img class="img-fluid" src="/webpage/images/img-pro-03.jpg" alt="" />--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                            <td class="name-pr">--%>
-<%--                                <a href="#">--%>
-<%--                                    Lorem ipsum dolor sit amet--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                            <td class="price-pr">--%>
-<%--                                <p>$ 30.0</p>--%>
-<%--                            </td>--%>
-<%--                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>--%>
-<%--                            <td class="total-pr">--%>
-<%--                                <p>$ 80.0</p>--%>
-<%--                            </td>--%>
-<%--                            <td class="remove-pr">--%>
-<%--                                <a href="#">--%>
-<%--                                    <i class="fas fa-times"></i>--%>
-<%--                                </a>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
                         </tbody>
                     </table>
                 </div>
@@ -169,58 +122,59 @@
             </div>
         </div>
 
+        <form action="/cart">
         <div class="row my-5">
             <div class="col-lg-6 col-sm-6">
-<%--                <div class="coupon-box">--%>
-<%--                    <div class="input-group input-group-sm">--%>
-<%--                        <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">--%>
-<%--                        <div class="input-group-append">--%>
-<%--                            <button class="btn btn-theme" type="button">Apply Coupon</button>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <div class="coupon-box">
+                    <div class="input-group input-group-sm">
+                        <input type="text" hidden name="action" value="showBill">
+                        <input class="form-control" placeholder="Enter your coupon code" name="code" aria-label="Coupon code" type="text">
+                        <c:if test="${notice}"><div><p style="color: green; font-weight: 600; font-size: 1.5rem;">Nhập mã thành công</p></div></c:if>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="update-box">
-                    <input value="Update Cart" type="submit">
+                    <input value="Xem hóa đơn" type="submit">
                 </div>
             </div>
         </div>
+        </form>
 
         <div class="row my-5">
             <div class="col-lg-8 col-sm-12"></div>
             <div class="col-lg-4 col-sm-12">
                 <div class="order-box">
-                    <h3>Order summary</h3>
+                    <h3>Thanh toán</h3>
                     <div class="d-flex">
-                        <h4>Sub Total</h4>
-                        <div class="ml-auto font-weight-bold"> $ 130 </div>
+                        <h4>Cộng tiền</h4>
+                        <div class="ml-auto font-weight-bold"> ${total} đ</div>
                     </div>
                     <div class="d-flex">
-                        <h4>Discount</h4>
-                        <div class="ml-auto font-weight-bold"> $ 40 </div>
+                        <h4>Giảm giá</h4>
+                        <div class="ml-auto font-weight-bold">- 0 đ</div>
                     </div>
                     <hr class="my-1">
                     <div class="d-flex">
-                        <h4>Coupon Discount</h4>
-                        <div class="ml-auto font-weight-bold"> $ 10 </div>
+                        <h4>Phiếu giảm giá</h4>
+                        <div class="ml-auto font-weight-bold">- ${coupon} đ</div>
                     </div>
                     <div class="d-flex">
-                        <h4>Tax</h4>
-                        <div class="ml-auto font-weight-bold"> $ 2 </div>
+                        <h4>Thuế</h4>
+                        <div class="ml-auto font-weight-bold">+ ${vat} đ </div>
                     </div>
                     <div class="d-flex">
-                        <h4>Shipping Cost</h4>
-                        <div class="ml-auto font-weight-bold"> Free </div>
+                        <h4>Phí vận chuyển</h4>
+                        <div class="ml-auto font-weight-bold">+ 0 đ</div>
                     </div>
                     <hr>
                     <div class="d-flex gr-total">
-                        <h5>Grand Total</h5>
-                        <div class="ml-auto h5"> $ 388 </div>
+                        <h5>Tổng tiền phải thanh toán</h5>
+                        <div class="ml-auto h5"> ${sum} đ </div>
                     </div>
                     <hr> </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a href="/view/Cart.jsp" class="ml-auto btn hvr-hover">Checkout</a> </div>
+            <div class="col-12 d-flex shopping-box"><a href="/checkout" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
         </div>
 
     </div>

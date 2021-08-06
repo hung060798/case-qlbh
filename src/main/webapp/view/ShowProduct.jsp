@@ -59,7 +59,8 @@
 <%--                (int idsp, String tensp, String img, int gia, int soluong, String mausac, String size, String mota, int idbrand&ndash;%&gt;--%>
                 <td>${product.idsp}</td>
                 <td>${product.tensp}</td>
-                <td>${product.img}</td>
+                <td><img src="${product.img}" style="width: 100px; height: 70px;">
+                        </td>
                 <td>${product.gia}</td>
                 <td>${product.soluong}</td>
                 <td>${product.mausac}</td>
@@ -72,7 +73,7 @@
 
         </tbody>
     </table>
-    <a href="/product?action=back" type="submit" class="btn btn-success">Home</a>
+    <a href="/home" type="submit" class="btn btn-success">Home</a>
 </div>
 </body>
 </html>

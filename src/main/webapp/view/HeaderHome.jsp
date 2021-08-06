@@ -14,10 +14,17 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="our-link">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
-                        <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào Dũng CT</a></li>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> Đăng xuất</a></li>
-                        <li><a href="#"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                        <c:if test="${sessionScope.acc==null}">
+                            <li><a href="/login"><i class="fa fa-user s_color"></i> Đăng nhập</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc!=null}">
+                            <li><a href="/logout"><i class="fa fa-user s_color"></i> Đăng xuất</a></li>
+                            <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào ${sessionScope.acc.username}</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc.loaiTK==1}">
+                            <li><a href="/product"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
+                        </c:if>
                     </ul>
                 </div>
             </div>

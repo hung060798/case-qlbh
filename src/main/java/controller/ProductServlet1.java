@@ -19,6 +19,7 @@ public class ProductServlet1 extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
         RequestDispatcher dispatcher;
         if (action == null){
@@ -70,6 +71,7 @@ public class ProductServlet1 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
         RequestDispatcher dispatcher;
         switch (action) {
@@ -94,9 +96,7 @@ public class ProductServlet1 extends HttpServlet {
                     sqlException.printStackTrace();
                 }
 
-                req.setAttribute("ListProduct", productService.list);
-                dispatcher = req.getRequestDispatcher("view/Home.jsp");
-                dispatcher.forward(req, resp);
+                resp.sendRedirect("/product");
                 break;
             case "edit":
                 int idsp1 = Integer.parseInt(req.getParameter("idsp"));

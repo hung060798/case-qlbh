@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
         RequestDispatcher dispatcher;
         Cookie arr[]= req.getCookies();
@@ -47,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
         RequestDispatcher dispatcher;
         switch (action) {
@@ -102,8 +104,7 @@ public class LoginServlet extends HttpServlet {
                     p.setMaxAge(3600);
                     resp.addCookie(u);
                     resp.addCookie(p);
-                        dispatcher = req.getRequestDispatcher("view/Home.jsp");
-                        dispatcher.forward(req, resp);
+                    resp.sendRedirect("/home");
                 }
                 break;
         }

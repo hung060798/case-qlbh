@@ -66,7 +66,8 @@
                             <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào ${sessionScope.acc.username}</a></li>
                         </c:if>
                         <c:if test="${sessionScope.acc.loaiTK==1}">
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                            <li><a href="/product"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
                         </c:if>
                     </ul>
                 </div>
@@ -274,7 +275,7 @@
                                     <li><a href="/home?action=showDetail&idsp=${h.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="/cart?action=add&idsp=${h.idsp}">Add to Cart</a>
+                                <a class="cart" href="/cart?action=add&site=home&idsp=${h.idsp}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -297,7 +298,7 @@
                                     <li><a href="/home?action=showDetail&idsp=${l.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="/cart?action=add&idsp=${l.idsp}">Add to Cart</a>
+                                <a class="cart" href="/cart?action=add&site=home&idsp=${l.idsp}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -448,7 +449,7 @@
                             <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
                         </div>
                         <div class="team-description">
-                            <p>Đạt 09 hay có tên gọi khác là Đạt2k (sinh năm 2000) cũng là học viên của CodeGym và FPT. Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với chức danh giám đốc điều hành mảng bảo mật tài khoản. Anh hiện là người giàu thứ 6 thế giới với tài sản ròng ước tính là 100 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng đặc biệt là hay chém gió.</p>
+                            <p>Đạt 09 hay có tên gọi khác là Đạt2k1 (sinh năm 2001) cũng là học viên của CodeGym và FPT. Anh là nhà đồng sáng lập của Shoestore, và hiện đang điều hành chuỗi cửa hàng này với chức danh giám đốc điều hành mảng bảo mật tài khoản. Anh hiện là người giàu thứ 6 thế giới với tài sản ròng ước tính là 100 tỷ $ tính đến tháng 11 năm 2020. Anh có khả năng đặc biệt là hay chém gió.</p>
                         </div>
                         <hr class="my-0"> </div>
                 </div>

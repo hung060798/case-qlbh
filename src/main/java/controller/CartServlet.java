@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/cart"})
 public class CartServlet extends HttpServlet {
     private ProductDAO productDAO;
+
     @Override
     public void init() throws ServletException {
         productDAO = new ProductDAO();
@@ -32,6 +34,15 @@ public class CartServlet extends HttpServlet {
             case "add":
                 addToCart(req, resp);
                 break;
+            case "remove":
+                removeItem(req, resp);
+                break;
+            case "removeAll":
+                removeAllItem(req, resp);
+                break;
+            case "showBill":
+                showBill(req, resp);
+                break;
         }
     }
 
@@ -39,18 +50,18 @@ public class CartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         String action = req.getParameter("action");
-        if (action == null) action = "";
+
     }
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int soluongmua = 1;
         int idsp;
         if (req.getParameter("idsp") != null) {
-        idsp = Integer.parseInt(req.getParameter("idsp"));
-        Product product = productDAO.selectProductByID(idsp);
-        if(req.getParameter("soluongmua")!=null) {
-            soluongmua = Integer.parseInt(req.getParameter("soluongmua"));
-        }
+            idsp = Integer.parseInt(req.getParameter("idsp"));
+            Product product = productDAO.selectProductByID(idsp);
+            if (req.getParameter("soluongmua") != null) {
+                soluongmua = Integer.parseInt(req.getParameter("soluongmua"));
+            }
             HttpSession session = req.getSession();
             if (session.getAttribute("orders") == null) {
                 Item item = new Item();
@@ -79,7 +90,71 @@ public class CartServlet extends HttpServlet {
             }
 
         }
-        RequestDispatcher rd = req.getRequestDispatcher("/view/Cart.jsp");
+        String site = req.getParameter("site");
+        if (site == null) site = "";
+        switch (site) {
+            case "home":
+                resp.sendRedirect("/home");
+                break;
+            case "product":
+                resp.sendRedirect("/home?action=showAll");
+                break;
+            default:
+                resp.sendRedirect("view/Cart.jsp");
+        }
+
+    }
+
+    private void removeItem(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        Orders orders = (Orders) session.getAttribute("orders");
+        List<Item> listItem = orders.getListItem();
+        int id = Integer.parseInt(req.getParameter("idsp"));
+        if (listItem != null) {
+            for (Item i : listItem) {
+                if (i.getProduct().getIdsp() == id) {
+                    listItem.remove(listItem.indexOf(i));
+                    break;
+                }
+            }
+        }
+        resp.sendRedirect("view/Cart.jsp");
+    }
+
+    private void removeAllItem(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        Orders orders = (Orders) session.getAttribute("orders");
+        List<Item> listItem = orders.getListItem();
+        if (listItem != null) listItem.removeAll(listItem);
+        resp.sendRedirect("view/Cart.jsp");
+    }
+
+    private void showBill(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        Orders orders = (Orders) session.getAttribute("orders");
+        List<Item> listItem = orders.getListItem();
+        int total = 0;
+        if (listItem != null) {
+            for (Item i : listItem) {
+                total += i.getSoluongmua() * i.getProduct().getGia();
+            }
+        }
+        int coupon = 0;
+        int vat = (int) (0.02 * total);
+        String code = req.getParameter("code");
+        if (code == null) {
+            coupon = 0;
+            code = "";
+        }
+        if (code.equals("dungct") || code.equals("dat09") || code.equals("hungdegau")) {
+            coupon = (int) (0.05 * total);
+            req.setAttribute("notice", true);
+        }
+        req.setAttribute("total", total);
+        req.setAttribute("vat", vat);
+        req.setAttribute("coupon", coupon);
+        req.setAttribute("sum", total - coupon + vat);
+        RequestDispatcher rd = req.getRequestDispatcher("view/Cart.jsp");
         rd.forward(req, resp);
     }
 }

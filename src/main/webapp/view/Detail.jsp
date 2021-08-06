@@ -45,6 +45,9 @@
         * {
             scroll-behavior: smooth;
         }
+        .checkedstar {
+            color: orange;
+        }
     </style>
 
 </head>
@@ -86,7 +89,6 @@
                         <li>
                             <div class="form-group quantity-box">
                                 <label class="control-label">Số lượng: Hiện chỉ còn ${product.soluong} đôi, nhanh tay kẻo hết</label>
-                                <input class="form-control" min="0" max="${product.soluong}" type="number">
                             </div>
                         </li>
                         </c:if>
@@ -102,7 +104,7 @@
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
                             <a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào yêu thích</a>
-                            <a class="btn hvr-hover" data-fancybox-close="" href="/cart?action=add&idsp=${product.idsp}">Thêm vào giỏ hàng</a>
+                            <a class="btn hvr-hover" data-fancybox-close="" href="/cart?action=add&site=detail&idsp=${product.idsp}">Thêm vào giỏ hàng</a>
                         </div>
                     </div>
 
@@ -124,7 +126,14 @@
                                 <img class="border p-1" src="${imgRand}" style="width: 80px; height: 80px; border-radius: 50%;" alt="Generic placeholder image">
                             </div>
                             <div class="media-body">
-                                <p>${f.danhgia}  sao</p>
+                                <p>
+                                    <c:forEach var="s" begin="1" end="${f.danhgia}">
+                                        <span class="fa fa-star checkedstar"></span>
+                                    </c:forEach>
+                                    <c:forEach var="n" begin="1" end="${5 - f.danhgia}">
+                                        <span class="fa fa-star"></span>
+                                    </c:forEach>
+                                </p>
                                 <p>${f.binhluan}</p>
                                 <small class="text-muted">Posted by ${f.username} on ${f.ngaymua}</small>
                             </div>

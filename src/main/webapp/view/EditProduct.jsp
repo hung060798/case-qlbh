@@ -44,8 +44,7 @@
                 <td><input placeholder="Enter the soluong" name="soluong" value="${product.soluong}"></td>
                 <td><input placeholder="Enter the mausac" name="mausac" value="${product.mausac}"></td>
                 <td><input placeholder="Enter the size" name="size" value="${product.size}"></td>
-                <td><input placeholder="Enter the mota" name="mota" value="${product.mota}"></td>
-                <td><input placeholder="Enter the idbrand" name="idbrand" value="${product.idbrand}"></td>
+                <td><input type="number" size="2"name="idbrand" value="${product.idbrand}" min="0" max="4" step="1" class="c-input-text qty text"></td>
             </tr>
             </tbody>
         </table>

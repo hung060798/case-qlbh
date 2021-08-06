@@ -33,7 +33,7 @@
                 <td><input placeholder="Enter the mausac" name="mausac"></td>
                 <td><input placeholder="Enter the size" name="size"></td>
                 <td><input placeholder="Enter the mota" name="mota"></td>
-                <td><input placeholder="Enter the idbrand" name="idbrand"></td></tr>
+                <td><input type="number" name="idbrand" size="2" min="1" max="4" step="1" class="c-input-text qty text"></td></tr>
             </tbody>
         </table>
         <c:if test="${checkNull1}">

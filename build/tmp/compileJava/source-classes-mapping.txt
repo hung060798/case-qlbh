@@ -10,8 +10,8 @@ model/Feedback.java
  model.Feedback
 dao/LoginDAO.java
  dao.LoginDAO
-controller/CartServlet.java
- controller.CartServlet
+service/ProductService.java
+ service.ProductService
 controller/EmailCondition.java
  controller.EmailCondition
 controller/LoginServlet.java
@@ -32,7 +32,5 @@ model/Product.java
  model.Product
 controller/ProductServlet1.java
  controller.ProductServlet1
-service/ProductService.java
- service.ProductService
-controller/homeServlet.java
- controller.homeServlet
+controller/CartServlet.java
+ controller.CartServlet
