@@ -15,33 +15,19 @@ public class ProductService {
             sqlException.printStackTrace();
         }
     }
-
     public void add(Product product) throws SQLException {
         ManagerProduct.create(product);
         list.add(product);
     }
-
     public void edit(Product product, int index) throws SQLException {
         ManagerProduct.edit(product);
         list.set(index,product);
     }
-
     public void delete(int index) throws SQLException {
         ManagerProduct.delete(list.get(index).getIdsp());
         list.remove(index);
     }
-
-    public Product findById(int idsp){
-        for (Product p : list){
-            if (p.getIdsp() == idsp){
-                return p;
-            }
-        }
-        return  null;
-    }
-
     public ArrayList<Product> findByName(String name) throws SQLException {
         return  ManagerProduct.findByName(name);
     }
-
 }

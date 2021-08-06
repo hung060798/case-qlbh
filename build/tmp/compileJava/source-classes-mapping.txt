@@ -1,12 +1,12 @@
-controller/ProductServlet.java
- controller.ProductServlet
+model/Product.java
+ model.Product
 model/Account.java
  model.Account
 dao/DAO.java
  dao.DAO
-dao/ManagerProduct.java
- dao.ManagerProduct
-model/Product.java
- model.Product
 service/ProductService.java
  service.ProductService
+dao/ManagerProduct.java
+ dao.ManagerProduct
+controller/ProductServlet.java
+ controller.ProductServlet

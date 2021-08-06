@@ -25,10 +25,14 @@ public class ProductServlet extends HttpServlet {
             action= "";
         }
         switch (action){
+            case "back":
+                req.setAttribute("ListProduct",productService.list);
+                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher.forward(req,resp);
+                break;
             case "create":
                 resp.sendRedirect("view/CreateProduct.jsp");
                 break;
-
             case "edit":
                 int indexEdit = Integer.parseInt(req.getParameter("index"));
                 req.setAttribute("product",productService.list.get(indexEdit));
@@ -58,10 +62,9 @@ public class ProductServlet extends HttpServlet {
 
             default:
                 req.setAttribute("ListProduct",productService.list);
-                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher = req.getRequestDispatcher("view/Home.jsp");
                 dispatcher.forward(req,resp);
                 break;
-
         }
     }
 
@@ -71,28 +74,30 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher dispatcher;
         switch (action) {
             case "create":
-                int idsp = Integer.parseInt(req.getParameter("idsp"));
                 String tensp = req.getParameter("tensp");
                 String img = req.getParameter("img");
-                int gia = Integer.parseInt(req.getParameter("gia"));
-                int soluong = Integer.parseInt(req.getParameter("soluong"));
+                String gia = req.getParameter("gia");
+                String soluong = req.getParameter("soluong");
                 String mausac = req.getParameter("mausac");
                 String size = req.getParameter("size");
                 String mota = req.getParameter("mota");
-                int idbrand = Integer.parseInt(req.getParameter("idbrand"));
-
+                String idbrand = req.getParameter("idbrand");
+                if (tensp == "" ||img==""||gia==""||soluong==""||mausac==""||size==""||mota==""||idbrand=="") {
+                    req.setAttribute("checkNull1", true);
+                    dispatcher = req.getRequestDispatcher("view/CreateProduct.jsp");
+                    dispatcher.forward(req, resp);
+                }
                 try {
-                    Product product = new Product(idsp, tensp, img, gia, soluong, mausac,size,mota,idbrand);
+                    Product product = new Product(tensp, img, Integer.parseInt(gia), Integer.parseInt(soluong), mausac,size,mota,Integer.parseInt(idbrand));
                     productService.add(product);
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }
 
                 req.setAttribute("ListProduct", productService.list);
-                dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
+                dispatcher = req.getRequestDispatcher("view/Home.jsp");
                 dispatcher.forward(req, resp);
                 break;
-
             case "edit":
                 int idsp1 = Integer.parseInt(req.getParameter("idsp"));
                 String tensp1 = req.getParameter("tensp");
@@ -131,7 +136,6 @@ public class ProductServlet extends HttpServlet {
                 dispatcher= req.getRequestDispatcher("view/ShowProduct.jsp");
                 dispatcher.forward(req, resp);
                 break;
-
         }
     }
 }

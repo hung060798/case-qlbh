@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>Thêm mới sản phẩm</title>
+    <style>
+        .container{
+            background-color: greenyellow;
+        }
+        .table{
+            background-color: lightblue;
+        }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -26,25 +34,24 @@
             <tbody>
             <tr>
 <%--                (int idsp, String tensp, String img, int gia, int soluong, String mausac, String size, String mota, int idbrand--%>
-                <td><input placeholder="Enter the idsp" name="idsp"></td>
                 <td><input placeholder="Enter the tensp" name="tensp"></td>
                 <td><input placeholder="Enter the img" name="img"></td>
-                <td><input placeholder="Enter the gia" name="gia"></td>
+                <td><input placeholder="Enter the price" name="gia"></td>
                 <td><input placeholder="Enter the soluong" name="soluong"></td>
+            </tr>
+            <tr>
                 <td><input placeholder="Enter the mausac" name="mausac"></td>
                 <td><input placeholder="Enter the size" name="size"></td>
                 <td><input placeholder="Enter the mota" name="mota"></td>
-                <td><input placeholder="Enter the idbrand" name="idbrand"></td>
-            </tr>
-
+                <td><input placeholder="Enter the idbrand" name="idbrand"></td></tr>
             </tbody>
         </table>
-        <c:if test="${checkNull}">
+        <c:if test="${checkNull1}">
             <h4 style="text-align: center; color: red; font-weight: 600;">Bạn phải nhập đủ trường dữ liệu</h4>
         </c:if>
         <button type="submit" class="btn btn-success">Create Product</button>
-
     </form>
+    <a href="/product?action=back" type="submit" class="btn btn-success">Back</a>
 </div>
 </body>
 </html>
