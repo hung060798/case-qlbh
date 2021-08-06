@@ -14,8 +14,8 @@ controller/CartServlet.java
  controller.CartServlet
 controller/EmailCondition.java
  controller.EmailCondition
-controller/LoginServlet.java
- controller.LoginServlet
+controller/homeServlet.java
+ controller.homeServlet
 controller/ProductServlet.java
  controller.ProductServlet
 model/Account.java
@@ -34,5 +34,5 @@ controller/ProductServlet1.java
  controller.ProductServlet1
 service/ProductService.java
  service.ProductService
-controller/homeServlet.java
- controller.homeServlet
+controller/LoginServlet.java
+ controller.LoginServlet

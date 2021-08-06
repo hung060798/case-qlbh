@@ -27,8 +27,6 @@ public class LoginServlet extends HttpServlet {
                 req.setAttribute("password",o.getValue());
             }
         }
-
-
         if (action == null) {
             action = "";
         }
@@ -102,8 +100,7 @@ public class LoginServlet extends HttpServlet {
                     p.setMaxAge(3600);
                     resp.addCookie(u);
                     resp.addCookie(p);
-                        dispatcher = req.getRequestDispatcher("view/Home.jsp");
-                        dispatcher.forward(req, resp);
+                    resp.sendRedirect("/home");
                 }
                 break;
         }

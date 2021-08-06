@@ -72,7 +72,7 @@
 
         </tbody>
     </table>
-    <a href="/product?action=back" type="submit" class="btn btn-success">Home</a>
+    <a href="/home" type="submit" class="btn btn-success">Home</a>
 </div>
 </body>
 </html>

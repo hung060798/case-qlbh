@@ -66,7 +66,7 @@
                             <li><a href="#"><i class="fa fa-award s_color"></i> Xin chào ${sessionScope.acc.username}</a></li>
                         </c:if>
                         <c:if test="${sessionScope.acc.loaiTK==1}">
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
+                            <li><a href="/product"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
                         </c:if>
                     </ul>
                 </div>
