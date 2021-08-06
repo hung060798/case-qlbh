@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -57,7 +58,7 @@
             <div class="col-lg-12">
                 <h2>Giỏ hàng</h2>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/view/Home.jsp">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Giỏ hàng</li>
                 </ul>
             </div>
@@ -71,6 +72,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <c:if test="${sessionScope.orders==null}">
+                    <h1 style="text-align: center">Hiện chưa có sản phẩm nào, vui lòng lựa chọn đôi giày mà bạn yêu thích</h1>
+                </c:if>
+<c:if test="${sessionScope.orders!=null}">
                 <div class="table-main table-responsive">
                     <table class="table">
                         <thead>
@@ -84,23 +89,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <c:forEach items="${sessionScope.orders.listItem}" var="i">
                             <td class="thumbnail-img">
                                 <a href="#">
-                                    <img class="img-fluid" src="/webpage/images/img-pro-01.jpg" alt="" />
+                                    <img class="img-fluid" src="${i.product.img}" alt="" />
                                 </a>
                             </td>
                             <td class="name-pr">
                                 <a href="#">
-                                    Lorem ipsum dolor sit amet
+                                    ${i.product.tensp}
                                 </a>
                             </td>
                             <td class="price-pr">
-                                <p>$ 80.0</p>
+                                <p>${i.product.gia}</p>
                             </td>
-                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                            <td class="quantity-box"><input type="number" size="4" value="${i.soluongmua}" min="0" step="1" class="c-input-text qty text"></td>
                             <td class="total-pr">
-                                <p>$ 80.0</p>
+                                <p>${i.product.gia * i.soluongmua}</p>
                             </td>
                             <td class="remove-pr">
                                 <a href="#">
@@ -108,70 +113,72 @@
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="thumbnail-img">
-                                <a href="#">
-                                    <img class="img-fluid" src="/webpage/images/img-pro-02.jpg" alt="" />
-                                </a>
-                            </td>
-                            <td class="name-pr">
-                                <a href="#">
-                                    Lorem ipsum dolor sit amet
-                                </a>
-                            </td>
-                            <td class="price-pr">
-                                <p>$ 60.0</p>
-                            </td>
-                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                            <td class="total-pr">
-                                <p>$ 80.0</p>
-                            </td>
-                            <td class="remove-pr">
-                                <a href="#">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="thumbnail-img">
-                                <a href="#">
-                                    <img class="img-fluid" src="/webpage/images/img-pro-03.jpg" alt="" />
-                                </a>
-                            </td>
-                            <td class="name-pr">
-                                <a href="#">
-                                    Lorem ipsum dolor sit amet
-                                </a>
-                            </td>
-                            <td class="price-pr">
-                                <p>$ 30.0</p>
-                            </td>
-                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                            <td class="total-pr">
-                                <p>$ 80.0</p>
-                            </td>
-                            <td class="remove-pr">
-                                <a href="#">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        </c:forEach>
+<%--                        <tr>--%>
+<%--                            <td class="thumbnail-img">--%>
+<%--                                <a href="#">--%>
+<%--                                    <img class="img-fluid" src="/webpage/images/img-pro-02.jpg" alt="" />--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                            <td class="name-pr">--%>
+<%--                                <a href="#">--%>
+<%--                                    Lorem ipsum dolor sit amet--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                            <td class="price-pr">--%>
+<%--                                <p>$ 60.0</p>--%>
+<%--                            </td>--%>
+<%--                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>--%>
+<%--                            <td class="total-pr">--%>
+<%--                                <p>$ 80.0</p>--%>
+<%--                            </td>--%>
+<%--                            <td class="remove-pr">--%>
+<%--                                <a href="#">--%>
+<%--                                    <i class="fas fa-times"></i>--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <td class="thumbnail-img">--%>
+<%--                                <a href="#">--%>
+<%--                                    <img class="img-fluid" src="/webpage/images/img-pro-03.jpg" alt="" />--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                            <td class="name-pr">--%>
+<%--                                <a href="#">--%>
+<%--                                    Lorem ipsum dolor sit amet--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                            <td class="price-pr">--%>
+<%--                                <p>$ 30.0</p>--%>
+<%--                            </td>--%>
+<%--                            <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>--%>
+<%--                            <td class="total-pr">--%>
+<%--                                <p>$ 80.0</p>--%>
+<%--                            </td>--%>
+<%--                            <td class="remove-pr">--%>
+<%--                                <a href="#">--%>
+<%--                                    <i class="fas fa-times"></i>--%>
+<%--                                </a>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
                         </tbody>
                     </table>
                 </div>
+</c:if>
             </div>
         </div>
 
         <div class="row my-5">
             <div class="col-lg-6 col-sm-6">
-                <div class="coupon-box">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">
-                        <div class="input-group-append">
-                            <button class="btn btn-theme" type="button">Apply Coupon</button>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="coupon-box">--%>
+<%--                    <div class="input-group input-group-sm">--%>
+<%--                        <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">--%>
+<%--                        <div class="input-group-append">--%>
+<%--                            <button class="btn btn-theme" type="button">Apply Coupon</button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="update-box">

@@ -86,7 +86,7 @@
                         <li>
                             <div class="form-group quantity-box">
                                 <label class="control-label">Số lượng: Hiện chỉ còn ${product.soluong} đôi, nhanh tay kẻo hết</label>
-                                <input class="form-control" value="0" min="0" max="${product.soluong}" type="number">
+                                <input class="form-control" min="0" max="${product.soluong}" type="number">
                             </div>
                         </li>
                         </c:if>
@@ -102,7 +102,7 @@
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
                             <a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào yêu thích</a>
-                            <a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào giỏ hàng</a>
+                            <a class="btn hvr-hover" data-fancybox-close="" href="/cart?action=add&idsp=${product.idsp}">Thêm vào giỏ hàng</a>
                         </div>
                     </div>
 

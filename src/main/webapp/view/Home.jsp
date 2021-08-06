@@ -129,7 +129,7 @@
             <div class="attr-nav">
                 <ul>
                     <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="/view/Cart.jsp"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
@@ -268,7 +268,7 @@
                                     <li><a href="/home?action=showDetail&idsp=${h.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="/cart?action=add&idsp=${h.idsp}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">
@@ -291,7 +291,7 @@
                                     <li><a href="/home?action=showDetail&idsp=${l.idsp}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <a class="cart" href="#">Add to Cart</a>
+                                <a class="cart" href="/cart?action=add&idsp=${l.idsp}">Add to Cart</a>
                             </div>
                         </div>
                         <div class="why-text">

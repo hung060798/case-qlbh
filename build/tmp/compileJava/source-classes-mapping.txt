@@ -10,5 +10,11 @@ model/Feedback.java
  model.Feedback
 dao/ProductDAO.java
  dao.ProductDAO
+controller/CartServlet.java
+ controller.CartServlet
+model/Orders.java
+ model.Orders
 controller/ProductServlet.java
  controller.ProductServlet
+model/Item.java
+ model.Item
