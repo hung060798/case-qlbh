@@ -150,7 +150,7 @@ public class CartServlet extends HttpServlet {
             coupon = (int) (0.05 * total);
             req.setAttribute("notice", true);
         }
-        req.setAttribute("total", total);
+        session.setAttribute("total", total);
         req.setAttribute("vat", vat);
         req.setAttribute("coupon", coupon);
         req.setAttribute("sum", total - coupon + vat);

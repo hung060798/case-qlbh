@@ -1,5 +1,6 @@
 package controller;
 
+import dao.ProductDAO;
 import model.Product;
 import service.ProductService;
 
@@ -16,6 +17,12 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = {"/product"})
 public class ProductServlet1 extends HttpServlet {
     ProductService productService = new ProductService();
+    private ProductDAO productDAO;
+
+    @Override
+    public void init() throws ServletException {
+        productDAO = new ProductDAO();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,19 +42,15 @@ public class ProductServlet1 extends HttpServlet {
                 resp.sendRedirect("view/CreateProduct.jsp");
                 break;
             case "edit":
-                int indexEdit = Integer.parseInt(req.getParameter("index"));
-                req.setAttribute("product",productService.list.get(indexEdit));
+                int eId = Integer.parseInt(req.getParameter("idsp"));
+                req.setAttribute("product", productDAO.selectProductByID(eId));
                 dispatcher = req.getRequestDispatcher("view/EditProduct.jsp");
                 dispatcher.forward(req,resp);
                 break;
 
             case "delete":
-                int index = Integer.parseInt(req.getParameter("index"));
-                try {
-                productService.delete(index);
-                } catch (SQLException sqlException) {
-                    sqlException.printStackTrace();
-                }
+                int dID = Integer.parseInt(req.getParameter("idsp"));
+                productDAO.deleteProduct(dID);
                 resp.sendRedirect("/product");
                 break;
             case "findName":
@@ -62,7 +65,7 @@ public class ProductServlet1 extends HttpServlet {
                 break;
 
             default:
-                req.setAttribute("ListProduct",productService.list);
+                req.setAttribute("ListProduct",productDAO.selectAllProduct());
                 dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
                 dispatcher.forward(req,resp);
                 break;
@@ -111,15 +114,11 @@ public class ProductServlet1 extends HttpServlet {
 
                 Product product1 = new Product(idsp1, tensp1, img1, gia1,soluong1,mausac1,size1,mota1,idbrand1);
 
-                int index = Integer.parseInt(req.getParameter("index"));
-                try {
-                    productService.edit(product1, index);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+                productDAO.editProduct(product1);
+
 
                 // chuyển hướng request và response sang thàng jsp
-                req.setAttribute("ListProduct", productService.list);
+                req.setAttribute("ListProduct", productDAO.selectAllProduct());
                 dispatcher = req.getRequestDispatcher("view/ShowProduct.jsp");
                 dispatcher.forward(req, resp);
                 break;

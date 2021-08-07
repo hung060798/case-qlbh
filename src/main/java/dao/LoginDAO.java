@@ -80,4 +80,20 @@ public class LoginDAO {
         preparedStatement.execute();
     }
 
+    public static int selectIDTK(String username){
+        int idtk = 0;
+        String SelectIDTK = "select idtk from Account where username = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SelectIDTK);
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                idtk = rs.getInt("idtk");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return idtk;
+    }
+
 }

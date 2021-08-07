@@ -66,8 +66,8 @@
                 <td>${product.mausac}</td>
                 <td>${product.size}</td>
                 <td>${product.idbrand}</td>
-                <td><a href="/product?action=edit&index=${loop.index}" class="btn btn-warning">Edit</a></td>
-                <td><a href="/product?action=delete&index=${loop.index}" class="btn btn-danger">Delete</a></td>
+                <td><a href="/product?action=edit&idsp=${product.idsp}" class="btn btn-warning">Edit</a></td>
+                <td><a href="/product?action=delete&idsp=${product.idsp}" class="btn btn-danger">Delete</a></td>
             </tr>
         </c:forEach>
 

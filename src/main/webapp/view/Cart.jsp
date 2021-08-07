@@ -148,7 +148,7 @@
                     <h3>Thanh toán</h3>
                     <div class="d-flex">
                         <h4>Cộng tiền</h4>
-                        <div class="ml-auto font-weight-bold"> ${total} đ</div>
+                        <div class="ml-auto font-weight-bold"> ${sessionScope.total} đ</div>
                     </div>
                     <div class="d-flex">
                         <h4>Giảm giá</h4>
@@ -174,7 +174,7 @@
                     </div>
                     <hr> </div>
             </div>
-            <div class="col-12 d-flex shopping-box"><a href="/checkout?tongtien=${total}" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
+            <div class="col-12 d-flex shopping-box"><a href="/view/Review.jsp" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
         </div>
 
     </div>

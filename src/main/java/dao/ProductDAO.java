@@ -24,6 +24,7 @@ public class ProductDAO {
     private final String SELECT_HOTTEST_PRODUCT = "select * from Product where soluong > 0 order by soluong limit 4";
     private final String SELECT_ALL_BRAND = "select * from Brand";
     private final String GET_TOTAL_PRODUCT = "select count(*) from Product";
+    private final String DELETE_PRODUCT = "delete from Product where idsp = ?";
 
     public List<Product> selectAllProduct() {
         List<Product> listProduct = new ArrayList<>();
@@ -214,6 +215,36 @@ public class ProductDAO {
         }
         return listFeedback;
     }
+
+    public void deleteProduct(int idsp) {
+        try {
+            PreparedStatement pS = dao.getConnection().prepareStatement(DELETE_PRODUCT);
+            pS.setInt(1, idsp);
+            pS.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void editProduct(Product product) {
+        String EDIT_PRODUCT = "update Product set tensp = ?, img = ?, gia = ?, soluong = ?, mausac = ?, size = ?, mota = ?, idbrand = ? where idsp = ?";
+        try {
+            PreparedStatement pS = dao.getConnection().prepareStatement(EDIT_PRODUCT);
+            pS.setString(1, product.getTensp());
+            pS.setString(2, product.getImg());
+            pS.setInt(3, product.getGia());
+            pS.setInt(4, product.getSoluong());
+            pS.setString(5, product.getMausac());
+            pS.setString(6, product.getSize());
+            pS.setString(7, product.getMota());
+            pS.setInt(8, product.getIdbrand());
+            pS.setInt(9, product.getIdsp());
+            pS.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 
 
 
