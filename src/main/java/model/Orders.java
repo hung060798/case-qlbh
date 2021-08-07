@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Orders {
     private int idhd;
-    private Account account;
+    private int idtk;
     private int tonggia;
     private Date ngaymua;
     private List<Item> listItem;
@@ -16,9 +16,9 @@ public class Orders {
         listItem = new ArrayList<>();
     }
 
-    public Orders(int idhd, Account account, int tonggia, Date ngaymua, List<Item> listItem) {
+    public Orders(int idhd, int idtk, int tonggia, Date ngaymua, List<Item> listItem) {
         this.idhd = idhd;
-        this.account = account;
+        this.idtk = idtk;
         this.tonggia = tonggia;
         this.ngaymua = ngaymua;
         this.listItem = listItem;
@@ -32,12 +32,12 @@ public class Orders {
         this.idhd = idhd;
     }
 
-    public Account getAccount() {
-        return account;
+    public int getIdtk() {
+        return idtk;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccount(int idtk) {
+        this.idtk = idtk;
     }
 
     public int getTonggia() {

@@ -79,4 +79,5 @@ public class LoginDAO {
         preparedStatement.setInt(5, tk.getLoaiTK());
         preparedStatement.execute();
     }
+
 }
