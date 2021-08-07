@@ -7,7 +7,6 @@ public class Account {
     private String email;
     private String address;
     private int loaiTK;
-
     public Account() {
     }
 

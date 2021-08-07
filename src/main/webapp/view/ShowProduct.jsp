@@ -24,13 +24,13 @@
 
     <h2>Show Sản Phẩm</h2>
     <a href="/product?action=create" class="btn btn-success">Create</a>
-    <br>
-    <form action="/product" method="get">
-        <input type="text" placeholder="Enter the id you want to find" name ="findName">
-        <input type="text" hidden name="action" value="findName">
-        <button type="submit" class="btn btn-info">Find by name</button>
-    </form>
-    <br>
+<%--    <br>--%>
+<%--    <form action="/product" method="get">--%>
+<%--        <input type="text" placeholder="Enter the id you want to find" name ="findName">--%>
+<%--        <input type="text" hidden name="action" value="findName">--%>
+<%--        <button type="submit" class="btn btn-info">Find by name</button>--%>
+<%--    </form>--%>
+<%--    <br>--%>
     <form action="/product?action=find" method="post">
         <input type="text" placeholder="Enter the id you want to find" name ="idfind">
         <button class="btn btn-info" type="submit">Search by id</button>
