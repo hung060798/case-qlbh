@@ -4,18 +4,22 @@ model/Orders.java
  model.Orders
 model/Brand.java
  model.Brand
-service/AccService.java
- service.AccService
-model/Feedback.java
- model.Feedback
-dao/LoginDAO.java
- dao.LoginDAO
 service/ProductService.java
  service.ProductService
-controller/EmailCondition.java
- controller.EmailCondition
-controller/LoginServlet.java
- controller.LoginServlet
+model/Feedback.java
+ model.Feedback
+dao/OrdersDAO.java
+ dao.OrdersDAO
+dao/LoginDAO.java
+ dao.LoginDAO
+controller/CartServlet.java
+ controller.CartServlet
+dao/AccountDao.java
+ dao.AccountDao
+controller/OrdersServlet.java
+ controller.OrdersServlet
+model/Product.java
+ model.Product
 controller/ProductServlet.java
  controller.ProductServlet
 model/Account.java
@@ -26,11 +30,15 @@ dao/DAO.java
  dao.DAO
 model/Item.java
  model.Item
-dao/ManagerProduct.java
- dao.ManagerProduct
-model/Product.java
- model.Product
 controller/ProductServlet1.java
  controller.ProductServlet1
-controller/CartServlet.java
- controller.CartServlet
+dao/ManagerProduct.java
+ dao.ManagerProduct
+controller/EmailCondition.java
+ controller.EmailCondition
+controller/LoginServlet.java
+ controller.LoginServlet
+service/AccService.java
+ service.AccService
+controller/AccountServlet.java
+ controller.AccountServlet
