@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet(urlPatterns = {"","/home"})
 public class ProductServlet extends HttpServlet {
     private ProductDAO productDAO;
 

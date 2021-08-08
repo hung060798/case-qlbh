@@ -8,29 +8,33 @@ service/AccService.java
  service.AccService
 model/Feedback.java
  model.Feedback
-dao/LoginDAO.java
- dao.LoginDAO
-service/ProductService.java
- service.ProductService
-controller/EmailCondition.java
- controller.EmailCondition
-controller/LoginServlet.java
- controller.LoginServlet
-controller/ProductServlet.java
- controller.ProductServlet
-model/Account.java
- model.Account
-dao/ProductDAO.java
- dao.ProductDAO
-dao/DAO.java
- dao.DAO
 model/Item.java
  model.Item
-dao/ManagerProduct.java
- dao.ManagerProduct
 model/Product.java
  model.Product
+dao/LoginDAO.java
+ dao.LoginDAO
+controller/EmailCondition.java
+ controller.EmailCondition
+dao/ManagerProduct.java
+ dao.ManagerProduct
+dao/ProductDAO.java
+ dao.ProductDAO
 controller/ProductServlet1.java
  controller.ProductServlet1
+model/Account.java
+ model.Account
+dao/OrdersDAO.java
+ dao.OrdersDAO
+service/ProductService.java
+ service.ProductService
+dao/DAO.java
+ dao.DAO
+controller/LoginServlet.java
+ controller.LoginServlet
 controller/CartServlet.java
  controller.CartServlet
+controller/OrdersServlet.java
+ controller.OrdersServlet
+controller/ProductServlet.java
+ controller.ProductServlet

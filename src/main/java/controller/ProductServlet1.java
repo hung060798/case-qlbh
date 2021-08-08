@@ -40,7 +40,6 @@ public class ProductServlet1 extends HttpServlet {
                 dispatcher = req.getRequestDispatcher("view/EditProduct.jsp");
                 dispatcher.forward(req,resp);
                 break;
-
             case "delete":
                 int index = Integer.parseInt(req.getParameter("index"));
                 try {
