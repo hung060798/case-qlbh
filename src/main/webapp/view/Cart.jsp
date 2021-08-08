@@ -84,7 +84,7 @@
                             <th>Tên sản phẩm</th>
                             <th>Đơn giá</th>
                             <th>Số lượng</th>
-                            <th>Tổng tiền</th>
+                            <th>Tổng giá</th>
                             <th><a href="/cart?action=removeAll">Xóa tất cả</a></th>
                         </tr>
                         </thead>
