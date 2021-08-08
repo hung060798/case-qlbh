@@ -30,7 +30,7 @@
 <div class="container">
 
 
-    <h2>Show Sản Phẩm</h2>
+    <h2 style="text-align: center">Show Sản Phẩm</h2>
     <a href="/product?action=create" class="btn btn-success">Create</a>
     <br>
     <form action="/product" method="get">
@@ -67,7 +67,7 @@
                 <td>${product.size}</td>
                 <td>${product.idbrand}</td>
                 <td><a href="/product?action=edit&idsp=${product.idsp}" class="btn btn-warning">Edit</a></td>
-                <td><a href="/product?action=delete&idsp=${product.idsp}" class="btn btn-danger">Delete</a></td>
+                <td><a href="/product?action=delete&idsp=${product.idsp}" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa sản phẩm này?');">Delete</a></td>
             </tr>
         </c:forEach>
 

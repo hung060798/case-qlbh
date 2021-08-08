@@ -1,40 +1,44 @@
 controller/LogoutServlet.java
  controller.LogoutServlet
-controller/LoginServlet.java
- controller.LoginServlet
-model/Brand.java
- model.Brand
-dao/ManagerProduct.java
- dao.ManagerProduct
-model/Feedback.java
- model.Feedback
-model/Item.java
- model.Item
-service/ProductService.java
- service.ProductService
-controller/EmailCondition.java
- controller.EmailCondition
-model/Product.java
- model.Product
-dao/OrdersDAO.java
- dao.OrdersDAO
-model/Account.java
- model.Account
-controller/OrdersServlet.java
- controller.OrdersServlet
-dao/DAO.java
- dao.DAO
-service/AccService.java
- service.AccService
 model/Orders.java
  model.Orders
+model/Brand.java
+ model.Brand
+service/AccService.java
+ service.AccService
+model/Feedback.java
+ model.Feedback
+dao/OrdersDAO.java
+ dao.OrdersDAO
 dao/LoginDAO.java
  dao.LoginDAO
 controller/CartServlet.java
  controller.CartServlet
+controller/EmailCondition.java
+ controller.EmailCondition
+controller/OrdersServlet.java
+ controller.OrdersServlet
+controller/LoginServlet.java
+ controller.LoginServlet
 controller/ProductServlet.java
  controller.ProductServlet
+model/Account.java
+ model.Account
+dao/AccountDao.java
+ dao.AccountDao
+dao/DAO.java
+ dao.DAO
 dao/ProductDAO.java
  dao.ProductDAO
+model/Item.java
+ model.Item
+dao/ManagerProduct.java
+ dao.ManagerProduct
+controller/AccountServlet.java
+ controller.AccountServlet
+model/Product.java
+ model.Product
 controller/ProductServlet1.java
  controller.ProductServlet1
+service/ProductService.java
+ service.ProductService

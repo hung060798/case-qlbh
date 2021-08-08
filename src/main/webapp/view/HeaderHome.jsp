@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Start Header -->
 <!-- Start Main Top -->
 <div class="main-top">
@@ -23,7 +24,7 @@
                         </c:if>
                         <c:if test="${sessionScope.acc.loaiTK==1}">
                             <li><a href="/product"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
-                            <li><a href="#"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
+                            <li><a href="/account"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
                         </c:if>
                     </ul>
                 </div>

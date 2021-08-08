@@ -94,7 +94,7 @@
                             <hr>
                         </c:forEach>
                         <div>
-                            <button type="submit" class="btn btn-dark">Gửi</button>
+                            <button type="submit" class="btn btn-dark" onclick="return alert('Thanh toán thành công!')">Gửi</button>
                         </div>
                     </form>
                 </div>

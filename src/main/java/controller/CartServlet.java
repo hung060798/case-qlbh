@@ -43,6 +43,12 @@ public class CartServlet extends HttpServlet {
             case "showBill":
                 showBill(req, resp);
                 break;
+            case "increase":
+                increaseQuantity(req, resp);
+                break;
+            case "decrease":
+                decreaseQuantity(req, resp);
+                break;
         }
     }
 
@@ -156,5 +162,35 @@ public class CartServlet extends HttpServlet {
         req.setAttribute("sum", total - coupon + vat);
         RequestDispatcher rd = req.getRequestDispatcher("view/Cart.jsp");
         rd.forward(req, resp);
+    }
+
+    private void increaseQuantity(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        Orders orders = (Orders) session.getAttribute("orders");
+        List<Item> listItem = orders.getListItem();
+        int id = Integer.parseInt(req.getParameter("id"));
+        for (Item item : listItem) {
+            if (item.getIditem() == id) {
+                int soluongmua = item.getSoluongmua();
+                soluongmua++;
+                item.setSoluongmua(soluongmua);
+                resp.sendRedirect("view/Cart.jsp");
+            }
+        }
+    }
+
+    private void decreaseQuantity(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        Orders orders = (Orders) session.getAttribute("orders");
+        List<Item> listItem = orders.getListItem();
+        int id = Integer.parseInt(req.getParameter("id"));
+        for (Item item : listItem) {
+            if (item.getIditem() == id) {
+                int soluongmua = item.getSoluongmua();
+                soluongmua--;
+                item.setSoluongmua(soluongmua);
+                resp.sendRedirect("view/Cart.jsp");
+            }
+        }
     }
 }

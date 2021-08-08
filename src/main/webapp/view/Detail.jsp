@@ -100,7 +100,7 @@
                             </li>
                         </c:if>
                     </ul>
-<c:if test="${product.soluong<=0}">
+<c:if test="${product.soluong>0}">
                     <div class="price-box-bar">
                         <div class="cart-and-bay-btn">
                             <a class="btn hvr-hover" data-fancybox-close="" href="/cart?action=add&site=detail&idsp=${product.idsp}">Thêm vào giỏ hàng</a>

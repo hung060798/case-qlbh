@@ -67,7 +67,7 @@
                         </c:if>
                         <c:if test="${sessionScope.acc.loaiTK==1}">
                             <li><a href="/product"><i class="fas fa-location-arrow"></i> Quản lý sản phẩm</a></li>
-                            <li><a href="#"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
+                            <li><a href="/account"><i class="fas fa-heart"></i> Quản lý tài khoản</a></li>
                         </c:if>
                     </ul>
                 </div>

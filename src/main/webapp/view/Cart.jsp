@@ -174,8 +174,14 @@
                     </div>
                     <hr> </div>
             </div>
+            <c:if test="${sessionScope.acc != null}">
             <div class="col-12 d-flex shopping-box"><a href="/view/Review.jsp" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
-        </div>
+            </c:if>
+            <c:if test="${sessionScope.acc == null}">
+                <div class="col-12 d-flex shopping-box"><a href="/login" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
+            </c:if>
+
+</div>
 
     </div>
 </div>
